@@ -3,8 +3,8 @@ require('./config/connection') // conexion con la base de datos
 const express = require('express')
 const cors = require('cors')
 const Note = require('./model/Note')
-const notFound = require('./middleware/notFound')
-const handleErrors = require('./middleware/handleErrors')
+const notFound = require('./middleware/notFound.js')
+const handleErrors = require('./middleware/handleErrors.js')
 const app = express()
 
 app.use(express.json())
@@ -66,7 +66,7 @@ app.post('/api/notes', (request, response) => {
   const newNote = new Note({
     content: note.content,
     date: new Date(),
-    important: note.inportant || false
+    important: note.important || false
   })
 
   newNote.save().then(savedNote => {
