@@ -6,6 +6,16 @@ const noteScheme = new Schema({
   important: Boolean
 })
 
+noteScheme.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id
+    delete returnedObject._id
+    delete returnedObject.__v
+    // el delete normalemnte es una mala practica pero
+    // como el objeto que tocamos NO LO ESTAMOS TRANSFORMANDO no hay que preocuparse
+  }
+})
+
 const Note = model('Note', noteScheme)
 
 module.exports = Note
