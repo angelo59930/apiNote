@@ -7,7 +7,7 @@ const handleErrors = require('./middleware/handleErrors.js')
 const notesRouter = require('./controllers/notes')
 
 const app = express()
- 
+  
 app.use(express.json())
 app.use(cors())
 
